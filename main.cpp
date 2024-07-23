@@ -1,12 +1,9 @@
 #include <iostream>
 
 using namespace std;
-
-int main(){
-    // tworzymy pętle dla interakcji z uzytkownikiem
-    while (true){
-    // opcje:
-        // 1 printing help
+// funkcja wyswietlania opcji
+void printMenu(){
+    // 1 printing help
         cout << "1: Print help." << endl;
         // 2 printing exchange stats
         cout << "2: print exchange stats" << endl;
@@ -23,14 +20,19 @@ int main(){
              << endl;
 
         cout << "================================" << endl;
-        cout << "Select option 1 -6" << endl << endl;
+}
+// funkcja interakcji z użytkownikiem
+int getUserOption(){
+    cout << "Select option 1 -6" << endl << endl;
 
-        int userOption;
-        cin >> userOption;
-        cout << "You chose: " << userOption << endl << endl;
-    
-    // Warunki:
-        if (userOption == 0){
+    int userOption;
+    cin >> userOption;
+    cout << "You chose: " << userOption << endl << endl;
+    return userOption;
+}
+// funkcja warunków
+void processUserOptions(int userOption){
+    if (userOption == 0){
             cout << "Invalid choose, please select 1-6" << endl << endl;
         }
         if (userOption == 1)
@@ -67,11 +69,20 @@ int main(){
             cout << "Invalid choose, please select 1-6" << endl
                 << endl;
         }
+};
+int main(){
+    // tworzymy pętle dla interakcji z uzytkownikiem
+    while (true){
+    // opcje:
+        printMenu();
+        int userOption = getUserOption();
+        processUserOptions(userOption);
+
     // wychodzimy z pętli po klawiszu 9
-    if (userOption == 9){
-        cout << " See you next time" << endl;
-        break;
-    }
+        if (userOption == 9){
+            cout << " See you next time" << endl;
+            break;
+        }
         
     }
     return 0;
