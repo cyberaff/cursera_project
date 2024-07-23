@@ -3,8 +3,9 @@
 using namespace std;
 
 int main(){
-    // tworzymy pętle aby 
+    // tworzymy pętle dla interakcji z uzytkownikiem
     while (true){
+    // opcje:
         // 1 printing help
         cout << "1: Print help." << endl;
         // 2 printing exchange stats
@@ -27,7 +28,8 @@ int main(){
         int userOption;
         cin >> userOption;
         cout << "You chose: " << userOption << endl << endl;
-
+    
+    // Warunki:
         if (userOption == 0){
             cout << "Invalid choose, please select 1-6" << endl << endl;
         }
@@ -65,6 +67,7 @@ int main(){
             cout << "Invalid choose, please select 1-6" << endl
                 << endl;
         }
+    // wychodzimy z pętli po klawiszu 9
     if (userOption == 9){
         cout << " See you next time" << endl;
         break;
