@@ -54,12 +54,43 @@ int main(){
                     "BTC/USDT",
                     OrderBookType::bid} 
                 );
-    std::cout << std::endl;
-    std::cout << "The price is: " << orders[1].price << std::endl;
-    std::cout << "The amount is: " << orders[1].amount << std::endl;
-    std::cout << "The timeStamp is: " << orders[1].timeStamp << std::endl;
-    std::cout << "The product is: " << orders[1].product << std::endl;
-    std::cout << "The order type is: " << orderBookTypeToString(orders[1].orderType) << std::endl;
-    std::cout << std::endl;
+    // std::cout << std::endl;
+    // std::cout << "The price is: " << orders[1].price << std::endl;
+    // std::cout << "The amount is: " << orders[1].amount << std::endl;
+    // std::cout << "The timeStamp is: " << orders[1].timeStamp << std::endl;
+    // std::cout << "The product is: " << orders[1].product << std::endl;
+    // std::cout << "The order type is: " << orderBookTypeToString(orders[1].orderType) << std::endl;
+    // std::cout << std::endl;
+    
+    // Iteracje po wektorach
+    // 1.1. Iteracja kopiująca dane z obiektu klasy
+    // for (OrderBookEntry order : orders){
+    //     std::cout << "The price is: " << order.price << std::endl;
+    // }
+
+    
+    // 1.2.Iteracja nie kopiująca danych a pracująca na referencji do obiektu klasy odbywa się przez dodanie & po wywołaniu klasy
+    //Bardziej efektywna
+    // for(OrderBookEntry& order: orders){
+    //     std::cout << "The price is: " << order.price << std::endl;
+    // }
+
+    // 2. Iteracja w pętli array syntax
+    /*
+    Inicjujemy zmienną usigned int i - dla indeksów wektora, dodajemy warunek, że i musi byc mniejsze od wielkości wektora,
+    oraz inkrementujemy i (++i nie kopjuje danych inkrementuje bezpośrednio, natomiast i++ najpierw przechodzi przez pętle,
+    kopijuje dane i dopiero inkrementuje i dodaje dane)
+    */
+    // for (unsigned int i=0; i < orders.size(); ++i)
+    // {
+    //     std::cout << "The price is: " << orders[i].price << std::endl;
+    // }
+
+    // 3. Iteracja w pętli w stylu obiektowym - zamiast odniesienia do indeksu w [] 
+    // odnosimy się przez funkcję at() jako argument podajemy nasze i
+    for(unsigned int i; i < orders.size(); ++i)
+    {
+        std::cout << "The price is: " << orders.at(i).price << std::endl;
+    }
     return 0;
 }

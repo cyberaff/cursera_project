@@ -6,14 +6,21 @@ using namespace std;
 enum class OrderBookType {ask, bid};
 
 // Definiowanie klasy: class nazwa_klasy {}; bez srednika na końcu klasa nie moze zostać wywołana
+
+
 class OrderBookEntry{
-    // dane
     public:
-        double price;
-        double amount;
-        std::string timeStamp;
-        std::string product;
-        OrderBookType orderType;
+    OrderBookEntry(double price, double amount, std::string timeStamp, std::string product, OrderBookType orderType)
+    // Inicjalizacja danych w klasie
+        :price(price), amount(amount), timeStamp(timeStamp), product(product), orderType(orderType)
+    {
+    }
+    double price;
+    double amount;
+    std::string timeStamp;
+    std::string product;
+    OrderBookType orderType;
+    
 };
 
 // funkcja wyswietlania opcji
@@ -120,24 +127,24 @@ int main(){
     // OrderBookType orderType = OrderBookType::bid;
     
     // Tworzenie vectorów do przechowywania dużej ilości danych dla jednej zmiennej
-    std::vector<double> prices;
-    std::vector<double> amounts;
-    std::vector<std::string> timeStamps;
-    std::vector<std::string> products;
-    std::vector<OrderBookType> orderTypes;
+    // std::vector<double> prices;
+    // std::vector<double> amounts;
+    // std::vector<std::string> timeStamps;
+    // std::vector<std::string> products;
+    // std::vector<OrderBookType> orderTypes;
 
-    // Przekazywanie danych do vectorów
-    // Vectory przechowuja dane tylko jednego typu
-    prices.push_back(5352.00076616);
-    prices.push_back(10);
-    amounts.push_back(0.4973764);
-    timeStamps.push_back("2020/03/17 17:01:30.099017");
-    products.push_back("BTC/USDT");
-    orderTypes.push_back(OrderBookType::ask);
+    // // Przekazywanie danych do vectorów
+    // // Vectory przechowuja dane tylko jednego typu
+    // prices.push_back(5352.00076616);
+    // prices.push_back(10);
+    // amounts.push_back(0.4973764);
+    // timeStamps.push_back("2020/03/17 17:01:30.099017");
+    // products.push_back("BTC/USDT");
+    // orderTypes.push_back(OrderBookType::ask);
 
-    // Wyjęcie danych z vectorów (po indexach)
-    cout << "Price: " << prices[0] << endl;
-    cout << "Price: " << prices[1] << endl;
+    // // Wyjęcie danych z vectorów (po indexach)
+    // cout << "Price: " << prices[0] << endl;
+    // cout << "Price: " << prices[1] << endl;
 
 
     // // tworzymy pętle dla interakcji z uzytkownikiem
@@ -155,5 +162,13 @@ int main(){
     //     }
         
     // }
+    OrderBookEntry order1{10000, 
+                        0.02,   
+                        "2020/03/17 17:01:30.099017", 
+                        "BTC/USDT", 
+                        OrderBookType::bid};
+
+    std::cout << "The price is: " << order1.price << std::endl;
+
     return 0;
 }
