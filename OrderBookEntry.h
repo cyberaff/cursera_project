@@ -1,5 +1,7 @@
 #include <string>
 
+//Plik header '.h' jest definicją klasy
+
 enum class OrderBookType {ask, bid};
 
 
