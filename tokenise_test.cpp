@@ -75,11 +75,26 @@ int main()
                 std::cout << "Bad line " << std::endl;
                 continue;
             }
-            // converting string to double with stod() function
-            double price = std::stod(tokens[3]);
-            double amount = std::stod(tokens[4]);
+            // // converting string to double with stod() function
+            // double price = std::stod(tokens[3]);
+            // double amount = std::stod(tokens[4]);
+            // std::cout <<"Price to amount: " << price << ":" << amount << std::endl;
+
+            // catching the exceptions
+            try
+            {
+                double price = std::stod(tokens[3]);
+                double amount = std::stod(tokens[4]);
+                std::cout <<"Price to amount: " << price << ":" << amount << std::endl;
+            }
+            catch(const std::exception& e)
+            {
+                std::cout << "Bad float! " << tokens[3] << std::endl;
+                std::cout << "Bad float! " << tokens[4] << std::endl;
+            }
             
-            std::cout <<"Price to amount: " << price << ":" << amount << std::endl;
+            
+            
             // for(std::string& t : tokens){
             //     std::cout << t << std::endl;
             // }
