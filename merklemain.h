@@ -1,4 +1,6 @@
-
+#pragma once
+#include <vector>
+#include "OrderBookEntry.h"
 //Utworzenie klasy głównej
 
 class MerkleMain
@@ -7,6 +9,9 @@ class MerkleMain
         MerkleMain();
         /**Call this to start the sim */
         void init();
+    
+    private:
+        void loadOrderBook();
         void printMenu();
         void printHelp();
         void printStats();
@@ -18,6 +23,9 @@ class MerkleMain
         int getUserOption();
         /**  funkcja warunków */
         void processUserOptions(int userOption);
+
+        std::vector<OrderBookEntry> orders;
+        
 };
 
 

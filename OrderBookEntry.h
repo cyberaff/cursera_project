@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 //Plik header '.h' jest definicją klasy
