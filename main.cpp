@@ -10,8 +10,7 @@
 int main(){
     // MerkleMain app{};
     // app.init();
-    CSVReader reader;
-
+    CSVReader::readCSV("exaple_data.csv");
 }
 
     
