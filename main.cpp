@@ -3,12 +3,15 @@
 #include <vector>
 #include "OrderBookEntry.h"
 #include "merklemain.h"
+#include "CSVReader.h"
 
 
 
 int main(){
-    MerkleMain app{};
-    app.init();
+    // MerkleMain app{};
+    // app.init();
+    CSVReader reader;
+
 }
 
     

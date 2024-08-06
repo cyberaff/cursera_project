@@ -3,27 +3,27 @@
 #include <string>
 #include <fstream>
 
-/**Functin for tokenise a string from csv file */
-std::vector<std::string> tokenise(std::string csvLile, char separator)
+/**Function for tokenise a string from csv file */
+std::vector<std::string> tokenise(std::string csvLine, char separator)
 {
     //Vector for store the tokens */
     std::vector<std::string> tokens;
     signed int start, end;
     std::string token;
     //defining start possision: first character if it is not separator starting from 0
-    start = csvLile.find_first_not_of(separator, 0);
+    start = csvLine.find_first_not_of(separator, 0);
     //creating the do-while loop
     do{
         //defining end: separator after start 
-        end = csvLile.find_first_of(separator, start);
+        end = csvLine.find_first_of(separator, start);
 
         //finding a token
-        if(start == csvLile.length() || start == end) break;
+        if(start == csvLine.length() || start == end) break;
 
-        if(end >= 0) token = csvLile.substr(start, end - start);
+        if(end >= 0) token = csvLine.substr(start, end - start);
 
         else 
-            token = csvLile.substr(start, csvLile.length() - start);
+            token = csvLine.substr(start, csvLine.length() - start);
 
         //saving tokens in vector
         tokens.push_back(token);
