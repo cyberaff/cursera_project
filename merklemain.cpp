@@ -2,6 +2,7 @@
 #include <vector>
 #include "merklemain.h"
 #include "OrderBookEntry.h"
+#include "CSVReader.h"
 
 // Implementacja funkcji klasy głównej (wycięcie z pliku main.cpp)
 
@@ -29,30 +30,7 @@ void MerkleMain::init(){
 }
 /** load up some dummy data for now */
 void MerkleMain::loadOrderBook(){
-
-    // OrderBookEntry order1(10000.0, 0.00002, "2020/03/17 17:01:30.099017", "BTC/USDT", OrderBookType::ask);
-
-    // Przekazywanie konstruktora klasy do vectora
-    orders.push_back(OrderBookEntry{
-                    10000,
-                    0.02,
-                    "2020/03/17 17:01:30.099017",
-                    "BTC/USDT",
-                    OrderBookType::ask} 
-                );
-
-    orders.push_back(OrderBookEntry{
-                    20000,
-                    0.03,
-                    "2020/03/17 17:21:30.099017",
-                    "BTC/USDT",
-                    OrderBookType::bid} 
-                );
-    // Iteracje po wektorach
-    // 1.1. Iteracja kopiująca dane z obiektu klasy
-    // for (OrderBookEntry order : orders){
-    //     std::cout << "The price is: " << order.price << std::endl;
-    // }
+    orders = CSVReader::readCSV("exaple_data.csv");
 }
 // funkcja wyswietlania opcji
 void MerkleMain::printMenu(){
@@ -78,7 +56,19 @@ void MerkleMain::printHelp(){std::cout << "Help - your aim is to make money. Ana
 
 void MerkleMain::printStats(){
     std::cout << "OrderBook contains: " << orders.size() << " entries" << std::endl << std::endl;
-    
+    unsigned int bids = 0;
+    unsigned int asks = 0;
+    for (OrderBookEntry& e : orders){
+        if (e.orderType == OrderBookType::ask){
+            asks ++;
+        }
+        if (e.orderType == OrderBookType::bid){
+            bids ++;
+        }
+    }
+        std::cout << "   asks: " << asks 
+        << std::endl << "   and bids: " << bids << std::endl << std::endl;
+
 }
 
 void MerkleMain::makeOffer(){

@@ -8,9 +8,9 @@
 
 
 int main(){
-    // MerkleMain app{};
-    // app.init();
-    CSVReader::readCSV("exaple_data.csv");
+    MerkleMain app{};
+    app.init();
+    
 }
 
     
