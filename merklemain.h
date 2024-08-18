@@ -24,6 +24,8 @@ class MerkleMain
         /**  funkcja warunków */
         void processUserOptions(int userOption);
 
+        std::string currentTime;
+
         std::vector<OrderBookEntry> orders;
         
 };
