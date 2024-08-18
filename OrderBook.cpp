@@ -1,0 +1,22 @@
+#include "OrderBook.h"
+#include "CSVReader.h"
+
+/** construct, reading a csv file*/
+    OrderBook::OrderBook(std::string filename)
+    {
+        orders = CSVReader::readCSV(filename);
+    }
+/** return vector of all know products in the dataset */
+    std::vector<std::string> OrderBook::getKnownProducts()
+    {
+        std::vector<std::string> products;
+        return products;
+    }
+/**  return vector of Orders according to the sent filters */
+    std::vector<OrderBookEntry> OrderBook::getOrders(OrderBookType type,
+                                              std::string product,
+                                              std::string timestamp)
+    {
+        std::vector<OrderBookEntry> oreders_sub;
+        return oreders_sub;
+    }
