@@ -13,7 +13,7 @@ MerkleMain::MerkleMain(){
 
 /** your main function should call this */
 void MerkleMain::init(){
-    loadOrderBook();
+    // loadOrderBook();
     int input;
     while (true)
     {
@@ -28,10 +28,7 @@ void MerkleMain::init(){
     }
     
 }
-/** load up some dummy data for now */
-void MerkleMain::loadOrderBook(){
-    orders = CSVReader::readCSV("exaple_data.csv");
-}
+
 // funkcja wyswietlania opcji
 void MerkleMain::printMenu(){
     std::cout << "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << std::endl << std::endl;
@@ -55,19 +52,19 @@ void MerkleMain::printHelp(){std::cout << "Help - your aim is to make money. Ana
 }
 
 void MerkleMain::printStats(){
-    std::cout << "OrderBook contains: " << orders.size() << " entries" << std::endl << std::endl;
-    unsigned int bids = 0;
-    unsigned int asks = 0;
-    for (OrderBookEntry& e : orders){
-        if (e.orderType == OrderBookType::ask){
-            asks ++;
-        }
-        if (e.orderType == OrderBookType::bid){
-            bids ++;
-        }
-    }
-        std::cout << "   asks: " << asks 
-        << std::endl << "   and bids: " << bids << std::endl << std::endl;
+    // std::cout << "OrderBook contains: " << orders.size() << " entries" << std::endl << std::endl;
+    // unsigned int bids = 0;
+    // unsigned int asks = 0;
+    // for (OrderBookEntry& e : orders){
+    //     if (e.orderType == OrderBookType::ask){
+    //         asks ++;
+    //     }
+    //     if (e.orderType == OrderBookType::bid){
+    //         bids ++;
+    //     }
+    // }
+    //     std::cout << "   asks: " << asks 
+    //     << std::endl << "   and bids: " << bids << std::endl << std::endl;
 
 }
 

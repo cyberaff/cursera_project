@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include "OrderBookEntry.h"
+#include "OrderBook.h"
+
+
 //Utworzenie klasy głównej
 
 class MerkleMain
@@ -11,7 +14,7 @@ class MerkleMain
         void init();
     
     private:
-        void loadOrderBook();
+        // void loadOrderBook();
         void printMenu();
         void printHelp();
         void printStats();
@@ -24,7 +27,7 @@ class MerkleMain
         /**  funkcja warunków */
         void processUserOptions(int userOption);
 
-        std::string currentTime;
+        OrderBook orderBook{"exaple_data.csv"};
 
         std::vector<OrderBookEntry> orders;
         
