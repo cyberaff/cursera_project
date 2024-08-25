@@ -15,10 +15,12 @@ class OrderBook
         std::vector<OrderBookEntry> getOrders(OrderBookType type,
                                               std::string product,
                                               std::string timestamp);
+        /** Return staistic of the highest price */
         static double getHighPrice(std::vector<OrderBookEntry>& orders);
+        /** Return staistic of the lowest price */
         static double getLowPrice(std::vector<OrderBookEntry>& orders);
 
-
+        std::string getEarliestTime();
 
     private:
     /** place to store csv file data */

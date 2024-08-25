@@ -3,6 +3,7 @@
 #include "merklemain.h"
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
+#include "OrderBook.h"
 
 // Implementacja funkcji klasy głównej (wycięcie z pliku main.cpp)
 
@@ -15,6 +16,7 @@ MerkleMain::MerkleMain(){
 void MerkleMain::init(){
     // loadOrderBook();
     int input;
+    currentTime = orderBook.getEarliestTime();
     while (true)
     {
         printMenu();
@@ -46,6 +48,8 @@ void MerkleMain::printMenu(){
     std::cout << "6: Continue" << std::endl;
         //9 exit
     std::cout <<"9: EXIT See you next time" << std::endl << std::endl;
+
+    std::cout << "Current time is: " << currentTime << std::endl << std::endl;
 }
 
 void MerkleMain::printHelp(){std::cout << "Help - your aim is to make money. Analyse the market and make bids and offers" << std::endl << std::endl;

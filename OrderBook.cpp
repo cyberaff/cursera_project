@@ -57,3 +57,8 @@
         }
         return min;
     }
+
+    std::string OrderBook::getEarliestTime(){
+        return orders[0].timeStamp;
+    }
+    

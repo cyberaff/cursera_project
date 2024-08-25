@@ -27,6 +27,7 @@ class MerkleMain
         /**  funkcja warunków */
         void processUserOptions(int userOption);
 
+        std::string currentTime;
         OrderBook orderBook{"exaple_data.csv"};
 
         std::vector<OrderBookEntry> orders;
