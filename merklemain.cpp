@@ -60,6 +60,8 @@ void MerkleMain::printStats(){
                                                         p, 
                                                         "2020/03/17 17:01:24.884492");
         std::cout << "ASKs seen: " << entries.size() << std::endl;
+        std::cout << "Max asks: " << OrderBook::getHighPrice(entries) << std::endl;
+        std::cout << "Min asks: " << OrderBook::getLowPrice(entries) << std::endl;
     }
     // std::cout << "OrderBook contains: " << orders.size() << " entries" << std::endl << std::endl;
     // unsigned int bids = 0;
