@@ -99,6 +99,7 @@ void MerkleMain::printWallet(){
 
 void MerkleMain::goToNextTimeFrame(){
     std::cout << "Going to next time frame" << std::endl << std::endl;
+    currentTime = orderBook.getNextTime(currentTime);
     
 }
 

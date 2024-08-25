@@ -20,7 +20,12 @@ class OrderBook
         /** Return staistic of the lowest price */
         static double getLowPrice(std::vector<OrderBookEntry>& orders);
 
+        /**return the erliest time in the order book */
         std::string getEarliestTime();
+        /** return next time after 
+         * the sent time in the order book 
+         * if there is no next timestamp, wraps around to the strt.*/
+        std::string getNextTime(std::string timestamp);
 
     private:
     /** place to store csv file data */
