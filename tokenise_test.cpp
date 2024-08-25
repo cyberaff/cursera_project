@@ -106,7 +106,7 @@ int main()
     }
     else
     {
-        std::cout << "Could't open file" << std::endl;
+        std::cout << "Couldn't open file" << std::endl;
     }
 
 

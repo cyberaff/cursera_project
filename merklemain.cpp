@@ -56,6 +56,10 @@ void MerkleMain::printStats(){
     for (std::string const& p : orderBook.getKnownProducts())
     {
         std::cout<< "Product: " << p << std::endl;
+        std::vector<OrderBookEntry> entries = orderBook.getOrders(OrderBookType::ask,
+                                                        p, 
+                                                        "2020/03/17 17:01:24.884492");
+        std::cout << "ASKs seen: " << entries.size() << std::endl;
     }
     // std::cout << "OrderBook contains: " << orders.size() << " entries" << std::endl << std::endl;
     // unsigned int bids = 0;

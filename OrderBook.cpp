@@ -33,5 +33,12 @@
                                               std::string timestamp)
     {
         std::vector<OrderBookEntry> oreders_sub;
+        for (OrderBookEntry& e : orders){
+            if (e.orderType == type &&
+                e.product == product &&
+                e.timeStamp == timestamp){
+                    oreders_sub.push_back(e);
+                }
+        }
         return oreders_sub;
     }

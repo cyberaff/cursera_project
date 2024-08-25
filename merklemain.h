@@ -22,7 +22,7 @@ class MerkleMain
         void makeBid();
         void printWallet();
         void goToNextTimeFrame();
-        // funkcja interakcji z użytkownikiem
+        // user interaction
         int getUserOption();
         /**  funkcja warunków */
         void processUserOptions(int userOption);
