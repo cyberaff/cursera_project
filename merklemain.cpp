@@ -87,9 +87,8 @@ void MerkleMain::printStats(){
 void MerkleMain::makeAsk(){
     std::cout << "Make an ask - enter the amount: product, price, amount "
     "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
-    std::cout << "Your ask: ";
+    std::cout << "Ask: ";
     std::string input;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::getline(std::cin, input);
 
     std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
@@ -97,15 +96,19 @@ void MerkleMain::makeAsk(){
         std::cout << "You entered wrong ask!" << std::endl;
     }
     else {
-        OrderBookEntry obe = CSVReader::stringToOBE(
-            tokens[1],
-            tokens[2],
-            currentTime,
-            tokens[0],
-            OrderBookType::ask
-        );
+        try{
+            OrderBookEntry obe = CSVReader::stringToOBE(
+                tokens[1],
+                tokens[2],
+                currentTime,
+                tokens[0],
+                OrderBookType::ask);
+        }catch (const std::exception& e){
+            std::cout << "MerkleMain::makeAsk - bad input! It should be like this: ETH/BTC,200,0.5" << std::endl;
+        }
     }
-    std::cout << "You entered: " << input << std::endl;
+    
+    std::cout << std::endl << "You entered: " << input << std::endl;
 }
 
 void MerkleMain::makeBid(){
@@ -126,10 +129,18 @@ void MerkleMain::goToNextTimeFrame(){
 
 // funkcja interakcji z użytkownikiem
 int MerkleMain::getUserOption(){
+    int userOption = 0;
+    std::string line;
     std::cout << "================================" << std::endl << std::endl;
     std::cout << "Select option 1 -6" << std::endl << std::endl;
-    int userOption;
-    std::cin >> userOption;
+    std::getline(std::cin, line);
+    
+    try{
+        userOption = std::stoi(line);
+    }catch(const std::exception e){
+        std::cout << "MerkleMain::getUserOption - Enter the wright number" << std::endl;
+    }
+
     std::cout << std::endl << "You chose: " << userOption << std::endl << std::endl;
     std::cout << "================================" << std::endl;
     return userOption;
