@@ -91,6 +91,20 @@ void MerkleMain::makeAsk(){
     std::string input;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::getline(std::cin, input);
+
+    std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
+    if (tokens.size() != 3){
+        std::cout << "You entered wrong ask!" << std::endl;
+    }
+    else {
+        OrderBookEntry obe = CSVReader::stringToOBE(
+            tokens[1],
+            tokens[2],
+            currentTime,
+            tokens[0],
+            OrderBookType::ask
+        );
+    }
     std::cout << "You entered: " << input << std::endl;
 }
 
