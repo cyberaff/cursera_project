@@ -4,6 +4,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 #include "OrderBook.h"
+#include <limits>
 
 // Implementacja funkcji klasy głównej (wycięcie z pliku main.cpp)
 
@@ -83,9 +84,14 @@ void MerkleMain::printStats(){
 
 }
 
-void MerkleMain::makeOffer(){
-   std::cout << "Mark an offer" << std::endl << std::endl;
-   
+void MerkleMain::makeAsk(){
+    std::cout << "Make an ask - enter the amount: product, price, amount "
+    "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
+    std::cout << "Your ask: ";
+    std::string input;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, input);
+    std::cout << "You entered: " << input << std::endl;
 }
 
 void MerkleMain::makeBid(){
@@ -128,7 +134,7 @@ void MerkleMain::processUserOptions(int userOption){
         printStats();
     }
     if (userOption == 3){
-        makeOffer();
+        makeAsk();
     }
     if (userOption == 4){
         makeBid();
