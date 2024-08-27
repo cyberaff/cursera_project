@@ -103,6 +103,7 @@ void MerkleMain::makeAsk(){
                 currentTime,
                 tokens[0],
                 OrderBookType::ask);
+            orderBook.insertOrder(obe);
         }catch (const std::exception& e){
             std::cout << "MerkleMain::makeAsk - bad input! It should be like this: ETH/BTC,200,0.5" << std::endl;
         }

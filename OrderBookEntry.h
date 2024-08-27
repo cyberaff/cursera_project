@@ -18,6 +18,11 @@ class OrderBookEntry{
 
     static OrderBookType stringToOBT(std::string);
     
+    /**Function created to comper timestamps in Order Book */
+    static bool comperByTimeStamp(OrderBookEntry& e1, OrderBookEntry& e2){
+        return e1.timeStamp < e2.timeStamp;
+    }
+
     double price;
     double amount;
     std::string timeStamp;

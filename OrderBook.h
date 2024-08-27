@@ -15,6 +15,7 @@ class OrderBook
         std::vector<OrderBookEntry> getOrders(OrderBookType type,
                                               std::string product,
                                               std::string timestamp);
+
         /** Return staistic of the highest price */
         static double getHighPrice(std::vector<OrderBookEntry>& orders);
         /** Return staistic of the lowest price */
@@ -26,6 +27,9 @@ class OrderBook
          * the sent time in the order book 
          * if there is no next timestamp, wraps around to the strt.*/
         std::string getNextTime(std::string timestamp);
+
+        /** Function to insert an created order*/
+        void insertOrder(OrderBookEntry& order);
 
     private:
     /** place to store csv file data */
