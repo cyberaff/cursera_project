@@ -4,6 +4,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 #include "OrderBook.h"
+#include <limits>
 
 // Implementacja funkcji klasy głównej (wycięcie z pliku main.cpp)
 
@@ -62,7 +63,7 @@ void MerkleMain::printStats(){
         std::cout<< "Product: " << p << std::endl;
         std::vector<OrderBookEntry> entries = orderBook.getOrders(OrderBookType::ask,
                                                         p, 
-                                                        "2020/03/17 17:01:24.884492");
+                                                        currentTime);
         std::cout << "ASKs seen: " << entries.size() << std::endl;
         std::cout << "Max asks: " << OrderBook::getHighPrice(entries) << std::endl;
         std::cout << "Min asks: " << OrderBook::getLowPrice(entries) << std::endl;
@@ -83,9 +84,32 @@ void MerkleMain::printStats(){
 
 }
 
-void MerkleMain::makeOffer(){
-   std::cout << "Mark an offer" << std::endl << std::endl;
-   
+void MerkleMain::makeAsk(){
+    std::cout << "Make an ask - enter the amount: product, price, amount "
+    "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
+    std::cout << "Ask: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
+    if (tokens.size() != 3){
+        std::cout << "You entered wrong ask!" << std::endl;
+    }
+    else {
+        try{
+            OrderBookEntry obe = CSVReader::stringToOBE(
+                tokens[1],
+                tokens[2],
+                currentTime,
+                tokens[0],
+                OrderBookType::ask);
+            orderBook.insertOrder(obe);
+        }catch (const std::exception& e){
+            std::cout << "MerkleMain::makeAsk - bad input! It should be like this: ETH/BTC,200,0.5" << std::endl;
+        }
+    }
+    
+    std::cout << std::endl << "You entered: " << input << std::endl;
 }
 
 void MerkleMain::makeBid(){
@@ -106,10 +130,18 @@ void MerkleMain::goToNextTimeFrame(){
 
 // funkcja interakcji z użytkownikiem
 int MerkleMain::getUserOption(){
+    int userOption = 0;
+    std::string line;
     std::cout << "================================" << std::endl << std::endl;
     std::cout << "Select option 1 -6" << std::endl << std::endl;
-    int userOption;
-    std::cin >> userOption;
+    std::getline(std::cin, line);
+    
+    try{
+        userOption = std::stoi(line);
+    }catch(const std::exception e){
+        std::cout << "MerkleMain::getUserOption - Enter the wright number" << std::endl;
+    }
+
     std::cout << std::endl << "You chose: " << userOption << std::endl << std::endl;
     std::cout << "================================" << std::endl;
     return userOption;
@@ -128,7 +160,7 @@ void MerkleMain::processUserOptions(int userOption){
         printStats();
     }
     if (userOption == 3){
-        makeOffer();
+        makeAsk();
     }
     if (userOption == 4){
         makeBid();

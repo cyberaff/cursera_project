@@ -18,7 +18,7 @@ class MerkleMain
         void printMenu();
         void printHelp();
         void printStats();
-        void makeOffer();
+        void makeAsk();
         void makeBid();
         void printWallet();
         void goToNextTimeFrame();
