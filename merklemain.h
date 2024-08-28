@@ -28,7 +28,7 @@ class MerkleMain
         void processUserOptions(int userOption);
 
         std::string currentTime;
-        OrderBook orderBook{"exaple_data.csv"};
+        OrderBook orderBook{"test_file.csv"};
 
         std::vector<OrderBookEntry> orders;
         

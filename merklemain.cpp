@@ -123,6 +123,11 @@ void MerkleMain::printWallet(){
 
 void MerkleMain::goToNextTimeFrame(){
     std::cout << "Going to next time frame" << std::endl << std::endl;
+    std::vector<OrderBookEntry> sales = orderBook.matchAsksToBids("ETH/BTC", currentTime);
+    std::cout << "Sales: " << sales.size() << std::endl;
+    for (OrderBookEntry& sale : sales){
+        std::cout << "Sale price: " << sale.price << " Sale amount: " << sale.amount << std::endl;
+    }
     currentTime = orderBook.getNextTime(currentTime);
     
 }
