@@ -135,7 +135,7 @@
                     // if bid.amount < ask.amount # bid is completely gone, slice the ask
                     if (bid.amount < ask.amount){
                         // sale.amount = bid.amount
-                        sale.amount = ask.amount;
+                        sale.amount = bid.amount;
                         // sales.append(sale)
                         sales.push_back(sale);
                         // # update the ask
