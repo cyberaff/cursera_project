@@ -16,4 +16,5 @@ class OrderBook
                                               std::string product,
                                               std::string timestamp);
 
+        /** Return staistic of the highest price */
 };
