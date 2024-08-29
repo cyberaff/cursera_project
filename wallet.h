@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <map>
+#include "OrderBook.h"
 
 
 class Wallet
@@ -15,6 +17,9 @@ class Wallet
 
         /** chack if the wallet contains this much currency or more */
         bool containsCurrency(std::string type, double amount);
+
+        /**Check if the wallet can cope with this ask or bid */
+        bool canFulfillOrder(const OrderBookEntry& order);
 
         /** generate a string representation of the wallet */
         std::string toString();

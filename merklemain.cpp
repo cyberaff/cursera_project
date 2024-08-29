@@ -88,7 +88,7 @@ void MerkleMain::printStats(){
 }
 
 void MerkleMain::makeAsk(){
-    std::cout << "Make an ask - enter the amount: product, price, amount "
+    std::cout << "Make an ask - enter the amount: your product/product to buy, price, amount "
     "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
     std::cout << "Ask: ";
     std::string input;
@@ -106,7 +106,13 @@ void MerkleMain::makeAsk(){
                 currentTime,
                 tokens[0],
                 OrderBookType::ask);
-            orderBook.insertOrder(obe);
+            if (wallet.canFulfillOrder(obe)){
+                std::cout << "Wallet looks good." << std::endl;
+                orderBook.insertOrder(obe);
+            }
+            else 
+                std::cout << "Wallet has insufficient founds!" << std::endl;
+            
         }catch (const std::exception& e){
             std::cout << "MerkleMain::makeAsk - bad input! It should be like this: ETH/BTC,200,0.5" << std::endl;
         }
@@ -121,7 +127,7 @@ void MerkleMain::makeBid(){
 }
 
 void MerkleMain::printWallet(){
-    std::cout << "Your wallet is empty. " << std::endl << std::endl;
+    std::cout << "Your wallet is contains: " << std::endl << std::endl;
     std::cout << wallet.toString() << std::endl;
 } 
 
