@@ -6,9 +6,14 @@ Wallet::Wallet()
 
 }
 
-    void Wallet::insertCurrency(std::string type, double amount){
+void Wallet::insertCurrency(std::string type, double amount){
 
-    }
-    bool Wallet::containsCurrency(std::string type, double amount){
-        return false;
-    }
+}
+
+bool Wallet::containsCurrency(std::string type, double amount){
+    return false;
+}
+
+std::string Wallet::toString(){
+    return "oink";
+}

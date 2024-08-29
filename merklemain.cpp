@@ -18,6 +18,9 @@ void MerkleMain::init(){
     // loadOrderBook();
     int input;
     currentTime = orderBook.getEarliestTime();
+    
+    wallet.insertCurrency("BTC", 10.0);
+    
     while (true)
     {
         printMenu();
@@ -119,6 +122,7 @@ void MerkleMain::makeBid(){
 
 void MerkleMain::printWallet(){
     std::cout << "Your wallet is empty. " << std::endl << std::endl;
+    std::cout << wallet.toString() << std::endl;
 } 
 
 void MerkleMain::goToNextTimeFrame(){

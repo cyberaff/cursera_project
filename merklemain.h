@@ -2,6 +2,7 @@
 #include <vector>
 #include "OrderBookEntry.h"
 #include "OrderBook.h"
+#include "wallet.h"
 
 
 //Utworzenie klasy głównej
@@ -32,6 +33,7 @@ class MerkleMain
 
         std::vector<OrderBookEntry> orders;
         
+        Wallet wallet;
 };
 
 
