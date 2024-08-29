@@ -9,39 +9,49 @@ Wallet::Wallet()
 
 void Wallet::insertCurrency(std::string type, double amount){
     double balance;
-    if (balance < 0){
-        throw std::exception{};
+    try{
+        if (amount < 0){
+            throw std::invalid_argument("Can't add negative amount.");
+        }
+        if (currencies.count(type) == 0){   //not there yet
+            balance = 0;
+        }
+        else{                               // is there
+            balance = currencies[type];
+        }
+        balance += amount;
+        currencies[type] = balance;
+        std::cout << "You add " << type << " : " << amount << std::endl;
     }
-    if (currencies.count(type) == 0){   //not there yet
-        balance = 0;
+    catch(const std::exception& e){
+        std::cerr << "Error: " << e.what() << std::endl;
     }
-    else{                               // is there
-        balance = currencies[type];
-    }
-    balance += amount;
-    currencies[type] = balance;
-    std::cout << "You add " << type << " : " << amount << std::endl;
 }
 
 bool Wallet::removeCurrency(std::string type, double amount){
     double balance;
-    if (balance < 0){
-
-        return false;
-    }
-    if (currencies.count(type) == 0){   //not there yet
-        std::cout << "You try to remove " << type << " but the wallet not contains currency for " << type << std::endl;
-        return false;
-    }
-    else{                               // is there - do we have enough
-        if (containsCurrency(type,amount)){
-            std::cout << "Removing " << type << " : " << amount << std::endl;
-            currencies[type] -= amount;
-            return true;
+    try{
+        if (amount < 0){
+            throw std::invalid_argument("Can't remove negative amount.");
         }
-        else                            // not enough
+        if (currencies.count(type) == 0){   //not there yet
+            std::cout << "You try to remove " << type << " but the wallet not contains currency for " << type << std::endl;
             return false;
+        }
+        else{                               // is there - do we have enough
+            if (containsCurrency(type,amount)){
+                std::cout << "Removing " << type << " : " << amount << std::endl;
+                currencies[type] -= amount;
+                return true;
+            }
+            else                            // not enough
+                return false;
+        }
     }
+    catch(const std::exception& e){
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+    return false;
 }
 
 bool Wallet::containsCurrency(std::string type, double amount){

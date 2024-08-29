@@ -31,6 +31,9 @@ class OrderBook
         /** Function to insert an created order*/
         void insertOrder(OrderBookEntry& order);
 
+        std::vector<OrderBookEntry> matchAsksToBids(std::string product,
+                                                    std::string timestamp);
+
     private:
     /** place to store csv file data */
         std::vector<OrderBookEntry> orders;
