@@ -123,6 +123,37 @@ void MerkleMain::makeAsk(){
 
 void MerkleMain::makeBid(){
     std::cout << "Make a bid - enter an amount" << std::endl << std::endl;
+    std::cout << "Make an bid - enter the amount: your product/product to buy, price, amount "
+    "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
+    std::cout << "Ask: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
+    if (tokens.size() != 3){
+        std::cout << "You entered wrong bid!" << std::endl;
+    }
+    else {
+        try{
+            OrderBookEntry obe = CSVReader::stringToOBE(
+                tokens[1],
+                tokens[2],
+                currentTime,
+                tokens[0],
+                OrderBookType::bid);
+            if (wallet.canFulfillOrder(obe)){
+                std::cout << "Wallet looks good." << std::endl;
+                orderBook.insertOrder(obe);
+            }
+            else 
+                std::cout << "Wallet has insufficient founds!" << std::endl;
+            
+        }catch (const std::exception& e){
+            std::cout << "MerkleMain::makeBid - bad input! It should be like this: ETH/BTC,200,0.5" << std::endl;
+        }
+    }
+    
+    std::cout << std::endl << "You entered: " << input << std::endl;
     
 }
 
