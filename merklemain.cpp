@@ -106,6 +106,9 @@ void MerkleMain::makeAsk(){
                 currentTime,
                 tokens[0],
                 OrderBookType::ask);
+            
+            obe.username = "simuser";
+            
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
                 orderBook.insertOrder(obe);
@@ -141,6 +144,9 @@ void MerkleMain::makeBid(){
                 currentTime,
                 tokens[0],
                 OrderBookType::bid);
+            
+            obe.username = "simuser";
+            
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
                 orderBook.insertOrder(obe);

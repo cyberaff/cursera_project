@@ -3,7 +3,7 @@
 
 //Plik header '.h' jest definicją klasy
 
-enum class OrderBookType {ask, bid, sale, unkonown};
+enum class OrderBookType {ask, bid, asksale, bidsale, unkonown};
 
 
 // Definiowanie klasy: class nazwa_klasy {}; bez srednika na końcu klasa nie może zostać wywołana
@@ -16,7 +16,8 @@ class OrderBookEntry{
                    double amount, 
                    std::string timeStamp, 
                    std::string product, 
-                   OrderBookType orderType);
+                   OrderBookType orderType,
+                   std::string username = "dataset");
 
     static OrderBookType stringToOBT(std::string);
     
@@ -36,5 +37,6 @@ class OrderBookEntry{
     std::string timeStamp;
     std::string product;
     OrderBookType orderType;
+    std::string username;
     
 };
