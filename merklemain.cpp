@@ -105,9 +105,10 @@ void MerkleMain::makeAsk(){
                 tokens[2],
                 currentTime,
                 tokens[0],
-                OrderBookType::ask);
+                OrderBookType::ask,
+                "simuser");
             
-            obe.username = "simuser";
+            // obe.username = "simuser";
             
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
@@ -128,7 +129,7 @@ void MerkleMain::makeBid(){
     std::cout << "Make a bid - enter an amount" << std::endl << std::endl;
     std::cout << "Make an bid - enter the amount: your product/product to buy, price, amount "
     "eg. ETH/BTC,200,0.5 " << std::endl << std::endl;
-    std::cout << "Ask: ";
+    std::cout << "Bid: ";
     std::string input;
     std::getline(std::cin, input);
 
@@ -143,9 +144,10 @@ void MerkleMain::makeBid(){
                 tokens[2],
                 currentTime,
                 tokens[0],
-                OrderBookType::bid);
+                OrderBookType::bid,
+                "simuser");
             
-            obe.username = "simuser";
+            // obe.username = "simuser";
             
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
@@ -174,6 +176,10 @@ void MerkleMain::goToNextTimeFrame(){
     std::cout << "Sales: " << sales.size() << std::endl;
     for (OrderBookEntry& sale : sales){
         std::cout << "Sale price: " << sale.price << " Sale amount: " << sale.amount << std::endl;
+        if (sale.username == "simuser"){
+            //update the wallet
+            wallet.processSale(sale);
+        }
     }
     currentTime = orderBook.getNextTime(currentTime);
     

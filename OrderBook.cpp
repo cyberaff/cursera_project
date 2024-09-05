@@ -108,6 +108,7 @@
                     OrderBookEntry sale{ask.price, 0.0, timestamp, product, OrderBookType::asksale};
                     
                     //Cheking user type
+
                     if (bid.username == "simuser"){
                         sale.username = "simuser";
                         sale.orderType = OrderBookType::bidsale;
@@ -143,7 +144,7 @@
                         break;
                     }
                     // if bid.amount < ask.amount # bid is completely gone, slice the ask
-                    if (bid.amount < ask.amount){
+                    if (bid.amount < ask.amount && bid.amount > 0){
                         // sale.amount = bid.amount
                         sale.amount = bid.amount;
                         // sales.append(sale)

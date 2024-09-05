@@ -23,13 +23,15 @@ class MerkleMain
         void makeBid();
         void printWallet();
         void goToNextTimeFrame();
+        
         // user interaction
         int getUserOption();
+        
         /**  funkcja warunków */
         void processUserOptions(int userOption);
 
         std::string currentTime;
-        OrderBook orderBook{"test_file.csv"};
+        OrderBook orderBook{"example_data.csv"};
 
         std::vector<OrderBookEntry> orders;
         
