@@ -109,11 +109,13 @@
                     
                     //Cheking user type
 
-                    if (bid.username == "simuser"){
+                    if (bid.username == "simuser")
+                    {
                         sale.username = "simuser";
                         sale.orderType = OrderBookType::bidsale;
                     }
-                    if (ask.username == "simuser"){
+                    if (ask.username == "simuser")
+                    {
                         sale.username = "simuser";
                         sale.orderType = OrderBookType::asksale;
                     }

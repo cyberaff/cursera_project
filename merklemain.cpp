@@ -105,10 +105,9 @@ void MerkleMain::makeAsk(){
                 tokens[2],
                 currentTime,
                 tokens[0],
-                OrderBookType::ask,
-                "simuser");
+                OrderBookType::ask);
             
-            // obe.username = "simuser";
+            obe.username = "simuser";
             
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
@@ -144,10 +143,9 @@ void MerkleMain::makeBid(){
                 tokens[2],
                 currentTime,
                 tokens[0],
-                OrderBookType::bid,
-                "simuser");
+                OrderBookType::bid);
             
-            // obe.username = "simuser";
+            obe.username = "simuser";
             
             if (wallet.canFulfillOrder(obe)){
                 std::cout << "Wallet looks good." << std::endl;
@@ -171,15 +169,22 @@ void MerkleMain::printWallet(){
 } 
 
 void MerkleMain::goToNextTimeFrame(){
+    
     std::cout << "Going to next time frame" << std::endl << std::endl;
-    std::vector<OrderBookEntry> sales = orderBook.matchAsksToBids("ETH/BTC", currentTime);
-    std::cout << "Sales: " << sales.size() << std::endl;
-    for (OrderBookEntry& sale : sales){
+    for (std::string p : orderBook.getKnownProducts())
+    {
+        std::cout << "Matchig " << p << std::endl;
+        std::vector<OrderBookEntry> sales = orderBook.matchAsksToBids(p, currentTime);
+        std::cout << "Sales: " << sales.size() << std::endl;
+        
+        for (OrderBookEntry& sale : sales){
         std::cout << "Sale price: " << sale.price << " Sale amount: " << sale.amount << std::endl;
         if (sale.username == "simuser"){
             //update the wallet
             wallet.processSale(sale);
         }
+    }
+    
     }
     currentTime = orderBook.getNextTime(currentTime);
     

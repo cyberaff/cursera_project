@@ -2,18 +2,18 @@
 
 //Plik '.cpp' jest implementacją definicji klasy z pliku '.h' więc musi być on zaimportowany (dodany).
 
-OrderBookEntry::OrderBookEntry(double price, 
-                               double amount, 
-                               std::string timeStamp, 
-                               std::string product, 
-                               OrderBookType orderType,
+OrderBookEntry::OrderBookEntry(double _price, 
+                               double _amount, 
+                               std::string _timeStamp, 
+                               std::string _product, 
+                               OrderBookType _orderType,
                                std::string _username)
-:price(price), 
- amount(amount), 
- timeStamp(timeStamp), 
- product(product), 
- orderType(orderType),
- username(username)
+:price(_price), 
+ amount(_amount), 
+ timeStamp(_timeStamp), 
+ product(_product), 
+ orderType(_orderType),
+ username(_username)
 {
 
 }
